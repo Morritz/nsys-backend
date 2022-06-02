@@ -1,5 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { readFileSync } from 'fs';
+import { AddMusicStarDto } from './dto/add-music-star.dto';
 import { MusicStar } from './entities/music-star.entity';
 
 @Injectable()
@@ -20,7 +21,7 @@ export class MusicStarsService implements OnModuleInit {
   getAllMusicStars() {
     return this.musicStars;
   }
-  addNewMusicStar() {
-    return;
+  addNewMusicStar(addMusicStarDto: AddMusicStarDto) {
+    return this.musicStars.push(addMusicStarDto);
   }
 }

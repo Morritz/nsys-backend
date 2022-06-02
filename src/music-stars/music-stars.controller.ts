@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { AddMusicStarDto } from './dto/add-music-star.dto';
 import { MusicStarsService } from './music-stars.service';
 
 @Controller('music-stars')
@@ -10,7 +11,7 @@ export class MusicStarsController {
   }
 
   @Post()
-  addNewMusicStar() {
-    this.musicStarsService.addNewMusicStar();
+  addNewMusicStar(@Body() addMusicStarDto: AddMusicStarDto) {
+    this.musicStarsService.addNewMusicStar(addMusicStarDto);
   }
 }
