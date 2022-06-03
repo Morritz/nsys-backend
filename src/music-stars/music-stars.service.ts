@@ -25,7 +25,7 @@ export class MusicStarsService implements OnModuleInit {
       const parsedData = JSON.parse(data);
       this.musicStars = parsedData;
     } catch (e) {
-      console.log(e);
+      console.error(e);
       this.musicStars = [];
     }
   }
