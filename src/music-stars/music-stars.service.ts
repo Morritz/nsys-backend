@@ -8,11 +8,15 @@ export class MusicStarsService implements OnModuleInit {
   private musicStars: MusicStar[];
 
   private saveMusicStarsToFile() {
-    writeFileSync(
-      './data/musicStars.json',
-      JSON.stringify(this.musicStars),
-      'utf-8',
-    );
+    try {
+      writeFileSync(
+        './data/musicStars.json',
+        JSON.stringify(this.musicStars),
+        'utf-8',
+      );
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   onModuleInit() {
