@@ -6,6 +6,7 @@ import {
   Get,
   PipeTransform,
   Post,
+  Query,
   UsePipes,
 } from '@nestjs/common';
 import { AddMusicStarDto } from './dto/add-music-star.dto';
@@ -15,7 +16,8 @@ import { MusicStarsService } from './music-stars.service';
 export class MusicStarsController {
   constructor(private musicStarsService: MusicStarsService) {}
   @Get()
-  getAllMusicStars() {
+  getMusicStars(@Query('alias') alias: string) {
+    if (alias) return this.musicStarsService.findMusicStarsByAlias(alias);
     return this.musicStarsService.getAllMusicStars();
   }
 

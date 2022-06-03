@@ -21,7 +21,14 @@ export class MusicStarsService implements OnModuleInit {
   getAllMusicStars() {
     return this.musicStars;
   }
+
   addNewMusicStar(addMusicStarDto: AddMusicStarDto) {
     return this.musicStars.push(addMusicStarDto);
+  }
+
+  findMusicStarsByAlias(alias: string) {
+    return this.musicStars.filter((val) => {
+      if (val.Alias.includes(alias)) return val;
+    });
   }
 }

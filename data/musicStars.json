@@ -4,5 +4,11 @@
     "lastName": "Martyniuk",
     "Alias": "Zenek",
     "genre": "Disco Polo"
+  },
+  {
+    "firstName": "Ryszard",
+    "lastName": "Andrzejewski",
+    "Alias": "Peja",
+    "genre": "Rap"
   }
 ]
