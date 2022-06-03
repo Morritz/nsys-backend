@@ -1,11 +1,19 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { AddMusicStarDto } from './dto/add-music-star.dto';
 import { MusicStar } from './entities/music-star.entity';
 
 @Injectable()
 export class MusicStarsService implements OnModuleInit {
   private musicStars: MusicStar[];
+
+  private saveMusicStarsToFile() {
+    writeFileSync(
+      './data/musicStars.json',
+      JSON.stringify(this.musicStars),
+      'utf-8',
+    );
+  }
 
   onModuleInit() {
     try {
@@ -23,7 +31,8 @@ export class MusicStarsService implements OnModuleInit {
   }
 
   addNewMusicStar(addMusicStarDto: AddMusicStarDto) {
-    return this.musicStars.push(addMusicStarDto);
+    this.musicStars.push(addMusicStarDto);
+    this.saveMusicStarsToFile();
   }
 
   findMusicStarsByAlias(alias: string) {
