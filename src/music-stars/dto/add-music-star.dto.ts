@@ -1,5 +1,12 @@
-import { IsNotEmpty, IsString } from 'class-validator';
-import { Transform, TransformFnParams } from 'class-transformer';
+import {
+  IsIn,
+  IsInstance,
+  IsNotEmpty,
+  IsObject,
+  IsString,
+} from 'class-validator';
+import { Transform, TransformFnParams, Type } from 'class-transformer';
+import { Genre, genres } from '../entities/genre.entity';
 
 export class AddMusicStarDto {
   @IsString()
@@ -20,5 +27,6 @@ export class AddMusicStarDto {
   @IsString()
   @IsNotEmpty()
   @Transform(({ value }: TransformFnParams) => value?.trim())
-  readonly genre: string;
+  @IsIn(genres)
+  readonly genre: Genre;
 }
