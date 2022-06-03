@@ -28,7 +28,7 @@ export class MusicStarsService implements OnModuleInit {
 
   findMusicStarsByAlias(alias: string) {
     return this.musicStars.filter((val) => {
-      if (val.Alias.includes(alias)) return val;
+      if (val.Alias.startsWith(alias)) return val;
     });
   }
 }
